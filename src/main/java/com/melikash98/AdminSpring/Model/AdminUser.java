@@ -22,5 +22,6 @@ public class AdminUser {
     private String shoopName;
     private String ownerPhone;
     private String ownerPhoto;
+    private boolean isActive;
 }
 

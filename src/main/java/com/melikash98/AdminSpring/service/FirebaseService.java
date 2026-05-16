@@ -26,6 +26,7 @@ public class FirebaseService {
                     user.setPassword((String) snapshot.child("password").getValue());
                     user.setOwnerName((String) snapshot.child("nameOwner").getValue());
                     user.setUserName((String) snapshot.child("userName").getValue());
+                    user.setActive((boolean) snapshot.child("isActive").getValue());
                     user.setShoopName((String) snapshot.child("shopName").getValue());
                     user.setOwnerPhone((String) snapshot.child("ownerPhone").getValue());
                     user.setOwnerPhoto((String) snapshot.child("ownerPhoto").getValue());
