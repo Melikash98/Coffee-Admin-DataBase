@@ -17,6 +17,27 @@ public class AuthController {
     @Autowired
     private FirebaseService firebaseService;
 
+    @PostMapping("/register")
+    public ResponseEntity<?> register(
+            @RequestHeader("Authorization") String authHeader,
+            @RequestBody AdminUser adminUser) {
+        try {
+            String token = authHeader.substring(7);
+
+            FirebaseToken decoded = FirebaseAuth.getInstance().verifyIdToken(token);
+            String uid = decoded.getUid();
+
+            adminUser.setUid(uid);
+            adminUser.setEmail(decoded.getEmail());
+            firebaseService.saveAdmin(adminUser);
+
+            return ResponseEntity.ok(adminUser);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error: " + e.getMessage());
+        }
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestHeader("Authorization") String authHeader) {
         try {

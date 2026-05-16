@@ -5,6 +5,8 @@ import com.google.firebase.database.*;
 import com.melikash98.AdminSpring.Model.AdminUser;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -47,5 +49,23 @@ public class FirebaseService {
         });
 
         return future.get();
+    }
+    public void saveAdmin(AdminUser adminUser) throws Exception {
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("CoffeeShoppUsers")
+                .child(adminUser.getUid());
+
+        CompletableFuture<Void> future = new CompletableFuture<>();
+
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("uid", adminUser.getUid());
+        userData.put("email", adminUser.getEmail());
+        userData.put("userName", adminUser.getUserName());
+        userData.put("ownerName", adminUser.getOwnerName());
+        userData.put("shoopName", adminUser.getShoopName());
+        userData.put("ownerPhone", adminUser.getOwnerPhone());
+        userData.put("ownerPhoto", adminUser.getOwnerPhoto());
+
+        ref.setValueAsync(userData).get();
     }
 }
