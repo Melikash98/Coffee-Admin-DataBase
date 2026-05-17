@@ -52,8 +52,6 @@ public class AdminUser {
 
     @Column(name = "email_active_admin")
     private boolean isActive;
-    @Column(name = "timestamp_admin")
-    private long timestamp;
 
 
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
