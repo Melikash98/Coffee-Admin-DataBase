@@ -36,7 +36,11 @@ public class AdminUser {
     @Column(name = "emailActive_admin", nullable = true)
     private boolean isActive;
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
+    private List<Categories> categories;
+    @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
     private List<Items> menuItems;
+
+
 
     @Override
     public String toString() {
