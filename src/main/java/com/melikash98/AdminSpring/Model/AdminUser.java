@@ -27,19 +27,19 @@ public class AdminUser {
     @Column(name = "userName_admin", unique = true, nullable = false)
     private String userName;
 
-    @Column(name = "password_admin", nullable = false)
+    @Column(name = "password_admin")
     private String password;
 
-    @Column(name = "name_admin", nullable = false)
+    @Column(name = "name_admin")
     private String ownerName;
 
-    @Column(name = "storyName_admin", unique = true, nullable = false)
+    @Column(name = "storyName_admin")
     private String shoopName;
 
-    @Column(name = "phone_admin", nullable = false)
+    @Column(name = "phone_admin")
     private String ownerPhone;
 
-    @Column(name = "photo_admin", nullable = false)
+    @Column(name = "photo_admin")
     private String ownerPhoto;
 
     @Column(name = "emailActive_admin")
