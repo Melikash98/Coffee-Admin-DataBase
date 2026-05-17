@@ -1,11 +1,15 @@
-package com.melikash98.AdminSpring.Security;
+package com.melikash98.AdminSpring.Service;
 
 import com.melikash98.AdminSpring.Model.AdminUser;
 import com.melikash98.AdminSpring.DTO.LoginRequest;
 import com.melikash98.AdminSpring.DTO.RegisterRequest;
 import com.melikash98.AdminSpring.Repository.AdminUserRepository;
+import com.melikash98.AdminSpring.Security.JwtUtil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class AuthService {
 
     private AdminUserRepository adminUserRepository;

@@ -1,4 +1,4 @@
-package com.melikash98.AdminSpring.SecurityConfig;
+package com.melikash98.AdminSpring.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
