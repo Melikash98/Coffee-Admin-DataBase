@@ -15,30 +15,39 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminUser {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "Id", unique = true, nullable = true)
+    @Column(name = "Id", unique = true, nullable = false)
     private String uid;
-    @Column(name = "email_admin", nullable = true)
+
+    @Column(name = "email_admin", nullable = false, unique = true)
     private String email;
-    @Column(name = "userName_admin", unique = true, nullable = true)
+
+    @Column(name = "userName_admin", unique = true, nullable = false)
     private String userName;
-    @Column(name = "password_admin", nullable = true)
+
+    @Column(name = "password_admin", nullable = false)
     private String password;
-    @Column(name = "name_admin", nullable = true)
+
+    @Column(name = "name_admin", nullable = false)
     private String ownerName;
-    @Column(name = "storyName_admin", unique = true, nullable = true)
+
+    @Column(name = "storyName_admin", unique = true, nullable = false)
     private String shoopName;
-    @Column(name = "phone_admin", nullable = true)
+
+    @Column(name = "phone_admin", nullable = false)
     private String ownerPhone;
-    @Column(name = "photo_admin", nullable = true)
+
+    @Column(name = "photo_admin", nullable = false)
     private String ownerPhoto;
-    @Column(name = "emailActive_admin", nullable = true)
+
+    @Column(name = "emailActive_admin")
     private boolean isActive;
+
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
     private List<Categories> categories;
+
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
     private List<Items> menuItems;
-
 }
-
