@@ -16,13 +16,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Categories {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "Id", unique = true, nullable = true)
+    @Column(name = "Id", unique = true, nullable = false)
     private String id;
+
     @Column(name = "name_category", nullable = false)
     private String name;
-    @Column(name = "photo_item", nullable = false)
+
+    @Column(name = "photo_category", nullable = false)
     private String photo;
 
     @ManyToOne
