@@ -23,7 +23,7 @@ public class AdminUser {
     @Column(name = "email_admin", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "userName_admin", unique = true, nullable = false)
+    @Column(name = "user_name_admin", unique = true, nullable = false)
     private String userName;
 
     @Column(name = "password_admin")
@@ -32,7 +32,7 @@ public class AdminUser {
     @Column(name = "name_admin")
     private String ownerName;
 
-    @Column(name = "storyName_admin")
+    @Column(name = "story_name_admin")
     private String shoopName;
 
     @Column(name = "phone_admin")
@@ -50,7 +50,7 @@ public class AdminUser {
     @Column(name = "location_admin")
     private String ownerLocation;
 
-    @Column(name = "emailActive_admin")
+    @Column(name = "email_active_admin")
     private boolean isActive;
     @Column(name = "timestamp_admin")
     private long timestamp;
