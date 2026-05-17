@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @Table(name = "Items")
 @Entity
 @Data
@@ -23,12 +24,6 @@ public class Items {
 
     @Column(name = "name_item", nullable = false)
     private String name;
-
-    @Column(name = "category_item", nullable = false)
-    private String categoryName;
-
-    @Column(name = "category_id_item", nullable = false)
-    private String categoryId;
 
     @Column(name = "city_item", nullable = false)
     private String city;
@@ -54,8 +49,10 @@ public class Items {
     @Column(name = "timestamp", nullable = false)
     private long timestamp;
 
-    @Column(name = "uidAdmin", nullable = false)
-    private String uidAdmin;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Categories category;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<Photos> photos;
@@ -66,26 +63,4 @@ public class Items {
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private AdminUser adminUser;
-
-    @Override
-    public String toString() {
-        return "Items{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", categoryName='" + categoryName + '\'' +
-                ", categoryId='" + categoryId + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", isLiked=" + isLiked +
-                ", overview='" + overview + '\'' +
-                ", photoCount=" + photoCount +
-                ", price='" + price + '\'' +
-                ", typeItems='" + typeItems + '\'' +
-                ", timestamp=" + timestamp +
-                ", uidAdmin='" + uidAdmin + '\'' +
-                ", photos=" + photos +
-                ", scoreItem=" + scoreItem +
-                ", adminUser=" + adminUser +
-                '}';
-    }
 }

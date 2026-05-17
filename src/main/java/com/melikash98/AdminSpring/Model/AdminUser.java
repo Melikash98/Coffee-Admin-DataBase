@@ -40,21 +40,5 @@ public class AdminUser {
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
     private List<Items> menuItems;
 
-
-
-    @Override
-    public String toString() {
-        return "AdminUser{" +
-                "uid='" + uid + '\'' +
-                ", email='" + email + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", ownerName='" + ownerName + '\'' +
-                ", shoopName='" + shoopName + '\'' +
-                ", ownerPhone='" + ownerPhone + '\'' +
-                ", ownerPhoto='" + ownerPhoto + '\'' +
-                ", isActive=" + isActive +
-                '}';
-    }
 }
 
