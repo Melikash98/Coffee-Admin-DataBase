@@ -1,4 +1,4 @@
-package com.melikash98.AdminSpring.Model;
+package com.melikash98.AdminSpring.DTO;
 
 import lombok.Data;
 

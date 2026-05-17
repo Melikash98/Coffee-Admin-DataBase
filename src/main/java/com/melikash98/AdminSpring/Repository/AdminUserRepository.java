@@ -1,4 +1,4 @@
-package com.melikash98.AdminSpring;
+package com.melikash98.AdminSpring.Repository;
 
 import com.melikash98.AdminSpring.Model.AdminUser;
 import org.springframework.data.jpa.repository.JpaRepository;

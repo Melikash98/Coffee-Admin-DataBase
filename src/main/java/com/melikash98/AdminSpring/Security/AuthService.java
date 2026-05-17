@@ -1,8 +1,9 @@
-package com.melikash98.AdminSpring;
+package com.melikash98.AdminSpring.Security;
 
 import com.melikash98.AdminSpring.Model.AdminUser;
-import com.melikash98.AdminSpring.Model.LoginRequest;
-import com.melikash98.AdminSpring.Model.RegisterRequest;
+import com.melikash98.AdminSpring.DTO.LoginRequest;
+import com.melikash98.AdminSpring.DTO.RegisterRequest;
+import com.melikash98.AdminSpring.Repository.AdminUserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class AuthService {

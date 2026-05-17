@@ -1,4 +1,4 @@
-package com.melikash98.AdminSpring;
+package com.melikash98.AdminSpring.Security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

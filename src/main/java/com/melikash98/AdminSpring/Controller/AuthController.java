@@ -1,7 +1,8 @@
-package com.melikash98.AdminSpring;
+package com.melikash98.AdminSpring.Controller;
 
-import com.melikash98.AdminSpring.Model.LoginRequest;
-import com.melikash98.AdminSpring.Model.RegisterRequest;
+import com.melikash98.AdminSpring.Security.AuthService;
+import com.melikash98.AdminSpring.DTO.LoginRequest;
+import com.melikash98.AdminSpring.DTO.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
