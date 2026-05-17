@@ -4,6 +4,7 @@ import com.melikash98.AdminSpring.DTO.LoginRequest;
 import com.melikash98.AdminSpring.DTO.PhotosAdmin;
 import com.melikash98.AdminSpring.DTO.RegisterRequest;
 import com.melikash98.AdminSpring.DTO.UpdateProfileRequest;
+import com.melikash98.AdminSpring.Model.AdminUser;
 import com.melikash98.AdminSpring.Model.LoginResponse;
 import com.melikash98.AdminSpring.Service.AuthService;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +47,9 @@ public class AuthController {
             @PathVariable String uid,
             @RequestBody PhotosAdmin request) {
         return ResponseEntity.ok(authService.addProfilePhotos(uid, request));
+    }
+    @GetMapping("/profile/{uid}")
+    public ResponseEntity<AdminUser> getProfile(@PathVariable String uid) {
+        return ResponseEntity.ok(authService.getProfile(uid));
     }
 }

@@ -100,4 +100,8 @@ public class AuthService {
 
         return "Photos Add";
     }
+    public AdminUser getProfile(String id) {
+        return adminUserRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }
