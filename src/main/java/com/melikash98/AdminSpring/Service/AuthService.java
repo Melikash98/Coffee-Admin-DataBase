@@ -1,5 +1,6 @@
 package com.melikash98.AdminSpring.Service;
 
+import com.melikash98.AdminSpring.DTO.PhotosAdmin;
 import com.melikash98.AdminSpring.DTO.UpdateProfileRequest;
 import com.melikash98.AdminSpring.Model.AdminUser;
 import com.melikash98.AdminSpring.DTO.LoginRequest;
@@ -42,7 +43,7 @@ public class AuthService {
 
         AdminUser admin = AdminUser.builder()
                 .uid(uid)
-                .email(request.getEmail())
+                .email(request.getEmail().toLowerCase())
                 .userName(request.getUserName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .isActive(false)
@@ -86,5 +87,11 @@ public class AuthService {
 
         adminUserRepository.save(admin);
         return "Profile updated!";
+    }
+
+    public String addProfilePhotos(String id, PhotosAdmin photos){
+
+
+        return "Photos Add";
     }
 }

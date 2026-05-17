@@ -41,6 +41,9 @@ public class AdminUser {
     @Column(name = "photo_admin")
     private String ownerPhoto;
 
+    @Column(name = "photo_banner_admin")
+    private String ownerBanner;
+
     @Column(name = "gender_admin")
     private String ownerGender;
 
@@ -59,4 +62,5 @@ public class AdminUser {
 
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
     private List<Items> menuItems;
+
 }
