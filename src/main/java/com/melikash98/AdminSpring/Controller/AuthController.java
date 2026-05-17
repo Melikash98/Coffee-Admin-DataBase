@@ -52,4 +52,8 @@ public class AuthController {
     public ResponseEntity<AdminUser> getProfile(@PathVariable String uid) {
         return ResponseEntity.ok(authService.getProfile(uid));
     }
+    @DeleteMapping("/delete/{uid}")
+    public ResponseEntity<String> deleteAccount(@PathVariable String uid) {
+        return ResponseEntity.ok(authService.deleteAccount(uid));
+    }
 }

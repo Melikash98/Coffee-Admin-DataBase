@@ -104,4 +104,10 @@ public class AuthService {
         return adminUserRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
+    public String deleteAccount(String id) {
+        AdminUser admin = adminUserRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        adminUserRepository.delete(admin);
+        return "Account deleted!";
+    }
 }
