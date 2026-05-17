@@ -17,7 +17,6 @@ import java.util.List;
 public class AdminUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "Id", unique = true, nullable = false)
     private String uid;
 
@@ -41,6 +40,12 @@ public class AdminUser {
 
     @Column(name = "photo_admin")
     private String ownerPhoto;
+
+    @Column(name = "gender_admin")
+    private String ownerGender;
+
+    @Column(name = "birthday_admin")
+    private String ownerBirthday;
 
     @Column(name = "emailActive_admin")
     private boolean isActive;

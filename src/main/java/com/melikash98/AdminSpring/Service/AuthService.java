@@ -1,5 +1,6 @@
 package com.melikash98.AdminSpring.Service;
 
+import com.melikash98.AdminSpring.DTO.UpdateProfileRequest;
 import com.melikash98.AdminSpring.Model.AdminUser;
 import com.melikash98.AdminSpring.DTO.LoginRequest;
 import com.melikash98.AdminSpring.DTO.RegisterRequest;
@@ -22,6 +23,11 @@ public class AuthService {
         this.jwtUtil = jwtUtil;
     }
 
+    private String generateUid() {
+        int number = (int) (Math.random() * 9000) + 1000;
+        return "user" + number;
+    }
+
     public String register(RegisterRequest request) {
 
         if (adminUserRepository.existsByEmail(request.getEmail())) {
@@ -33,6 +39,7 @@ public class AuthService {
         }
 
         AdminUser admin = AdminUser.builder()
+                .uid(generateUid())
                 .email(request.getEmail())
                 .userName(request.getUserName())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -54,5 +61,23 @@ public class AuthService {
         }
 
         return jwtUtil.generateToken(admin.getEmail());
+    }
+
+    public String updateInfo(String id, UpdateProfileRequest update) {
+        AdminUser admin = adminUserRepository.findById(id).orElseThrow(() -> new RuntimeException("Your Account Not Found"));
+        if (update.getOwnerName() != null) admin.setOwnerName(update.getOwnerName());
+        if (update.getShoopName() != null) admin.setShoopName(update.getShoopName());
+        if (update.getOwnerPhone() != null) admin.setOwnerPhone(update.getOwnerPhone());
+        if (update.getOwnerGender() != null) admin.setOwnerGender(update.getOwnerGender());
+        if (update.getOwnerBirthday() != null) admin.setOwnerBirthday(update.getOwnerBirthday());
+        if (update.getUserName() != null) {
+            if (adminUserRepository.existsByUserName(update.getUserName())) {
+                return "This username is already taken!";
+            }
+            admin.setUserName(update.getUserName());
+        }
+
+        adminUserRepository.save(admin);
+        return "Profile updated!";
     }
 }
