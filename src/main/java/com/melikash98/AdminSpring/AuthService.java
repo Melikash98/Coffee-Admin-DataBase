@@ -9,11 +9,14 @@ public class AuthService {
 
     private AdminUserRepository adminUserRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
-    public AuthService(AdminUserRepository adminUserRepository) {
+    public AuthService(AdminUserRepository adminUserRepository, JwtUtil jwtUtil) {
         this.adminUserRepository = adminUserRepository;
         this.passwordEncoder = new BCryptPasswordEncoder();
+        this.jwtUtil = jwtUtil;
     }
+
     public String register(RegisterRequest request) {
 
         if (adminUserRepository.existsByEmail(request.getEmail())) {
@@ -35,6 +38,7 @@ public class AuthService {
 
         return "Successful registration!";
     }
+
     public String login(LoginRequest request) {
 
         AdminUser admin = adminUserRepository.findByEmail(request.getEmail())
@@ -44,6 +48,6 @@ public class AuthService {
             return "Wrong password!";
         }
 
-        return "Login successful!";
+        return jwtUtil.generateToken(admin.getEmail());
     }
 }
