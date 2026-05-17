@@ -2,12 +2,10 @@ package com.melikash98.AdminSpring.Controller;
 
 import com.melikash98.AdminSpring.DTO.LoginRequest;
 import com.melikash98.AdminSpring.DTO.RegisterRequest;
+import com.melikash98.AdminSpring.DTO.UpdateProfileRequest;
 import com.melikash98.AdminSpring.Service.AuthService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -27,5 +25,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+    @PutMapping("/update/{uid}")
+    public ResponseEntity<String> updateProfile(
+            @PathVariable String uid,
+            @RequestBody UpdateProfileRequest request) {
+        return ResponseEntity.ok(authService.updateInfo(uid, request));
     }
 }

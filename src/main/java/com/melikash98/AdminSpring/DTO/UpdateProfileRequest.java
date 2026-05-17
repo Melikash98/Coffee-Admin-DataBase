@@ -11,4 +11,5 @@ public class UpdateProfileRequest {
     private String ownerGender;
     private String ownerBirthday;
     private String userName;
+    private String ownerLocation;
 }

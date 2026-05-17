@@ -70,6 +70,7 @@ public class AuthService {
         if (update.getOwnerPhone() != null) admin.setOwnerPhone(update.getOwnerPhone());
         if (update.getOwnerGender() != null) admin.setOwnerGender(update.getOwnerGender());
         if (update.getOwnerBirthday() != null) admin.setOwnerBirthday(update.getOwnerBirthday());
+        if (update.getOwnerLocation() != null) admin.setOwnerBirthday(update.getOwnerLocation());
         if (update.getUserName() != null) {
             if (adminUserRepository.existsByUserName(update.getUserName())) {
                 return "This username is already taken!";

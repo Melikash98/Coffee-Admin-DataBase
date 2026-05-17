@@ -47,8 +47,14 @@ public class AdminUser {
     @Column(name = "birthday_admin")
     private String ownerBirthday;
 
+    @Column(name = "location_admin")
+    private String ownerLocation;
+
     @Column(name = "emailActive_admin")
     private boolean isActive;
+    @Column(name = "timestamp_admin")
+    private long timestamp;
+
 
     @OneToMany(mappedBy = "adminUser", cascade = CascadeType.ALL)
     private List<Categories> categories;
