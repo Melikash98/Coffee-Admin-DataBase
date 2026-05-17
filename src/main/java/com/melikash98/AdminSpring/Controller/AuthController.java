@@ -1,6 +1,7 @@
 package com.melikash98.AdminSpring.Controller;
 
 import com.melikash98.AdminSpring.DTO.LoginRequest;
+import com.melikash98.AdminSpring.DTO.PhotosAdmin;
 import com.melikash98.AdminSpring.DTO.RegisterRequest;
 import com.melikash98.AdminSpring.DTO.UpdateProfileRequest;
 import com.melikash98.AdminSpring.Model.LoginResponse;
@@ -27,14 +28,23 @@ public class AuthController {
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
     }
+
     @GetMapping("/uid")
     public ResponseEntity<String> getUid(@RequestParam String uid) {
         return ResponseEntity.ok(authService.getUid(uid));
     }
+
     @PutMapping("/update/{uid}")
     public ResponseEntity<String> updateProfile(
             @PathVariable String uid,
             @RequestBody UpdateProfileRequest request) {
         return ResponseEntity.ok(authService.updateInfo(uid, request));
+    }
+
+    @PutMapping("/photo/{uid}")
+    private ResponseEntity<String> addProfilePhotos(
+            @PathVariable String uid,
+            @RequestBody PhotosAdmin request) {
+        return ResponseEntity.ok(authService.addProfilePhotos(uid, request));
     }
 }

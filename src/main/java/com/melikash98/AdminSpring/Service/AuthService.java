@@ -70,6 +70,7 @@ public class AuthService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return admin.getUid();
     }
+
     public String updateInfo(String id, UpdateProfileRequest update) {
         AdminUser admin = adminUserRepository.findById(id).orElseThrow(() -> new RuntimeException("Your Account Not Found"));
         if (update.getOwnerName() != null) admin.setOwnerName(update.getOwnerName());
@@ -89,7 +90,12 @@ public class AuthService {
         return "Profile updated!";
     }
 
-    public String addProfilePhotos(String id, PhotosAdmin photos){
+    public String addProfilePhotos(String id, PhotosAdmin photos) {
+        AdminUser userPhotos = adminUserRepository.findById(id).orElseThrow(() -> new RuntimeException("Your Account Not Found"));
+        if (photos.getOwnerPhoto() != null) userPhotos.setOwnerPhoto(photos.getOwnerPhoto());
+        if (photos.getOwnerBanner() != null) userPhotos.setOwnerBanner(photos.getOwnerBanner());
+
+        adminUserRepository.save(userPhotos);
 
 
         return "Photos Add";
