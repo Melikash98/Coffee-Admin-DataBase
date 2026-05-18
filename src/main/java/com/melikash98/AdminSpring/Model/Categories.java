@@ -28,10 +28,6 @@ public class Categories {
     @Column(name = "photo_category", nullable = false)
     private String photo;
 
-    @ManyToOne
-    @JoinColumn(name = "admin_id", nullable = false)
-    private AdminUser adminUser;
-
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Items> items;
 }
