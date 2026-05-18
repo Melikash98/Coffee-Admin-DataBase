@@ -7,6 +7,8 @@ import com.melikash98.AdminSpring.Repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
@@ -33,5 +35,12 @@ public class CategoryService {
                 .photo(dto.getPhoto())
                 .build();
         return categoryRepository.save(category);
+    }
+    public List<Categories> getAllCategories() {
+        return categoryRepository.findAll();
+    }
+    public Categories getCategoryById(String id){
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found!"));
     }
 }
