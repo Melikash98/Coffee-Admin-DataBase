@@ -22,29 +22,36 @@ public class Items {
     @Column(name = "Id", unique = true, nullable = false)
     private String id;
 
-    @Column(name = "name_item", nullable = false)
+    @Column(name = "name_item")
     private String name;
 
-    @Column(name = "city_item", nullable = false)
+    @Column(name = "city_item")
     private String city;
 
-    @Column(name = "country_item", nullable = false)
+    @Column(name = "country_item")
     private String country;
 
     @Column(name = "isLiked_item")
     private boolean isLiked;
 
-    @Column(name = "overview_item", nullable = false)
+    @Column(name = "overview_item")
     private String overview;
 
     @Column(name = "photoCount_item", nullable = false)
     private int photoCount;
 
-    @Column(name = "price_item", nullable = false)
+    @Column(name = "price_item")
     private String price;
 
     @Column(name = "type_items", nullable = false)
     private String typeItems;
+
+    @Column(name = "free_delivery_item")
+    private boolean freeDelivery;
+
+    @Column(name = "discount_item", nullable = false)
+    private int discount;
+
 
     @Column(name = "timestamp", nullable = false)
     private long timestamp;
