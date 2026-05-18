@@ -19,7 +19,6 @@ import java.util.List;
 public class Categories {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "Id", unique = true, nullable = false)
     private String id;
 
@@ -30,5 +29,6 @@ public class Categories {
     private String photo;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Items> items;
 }
