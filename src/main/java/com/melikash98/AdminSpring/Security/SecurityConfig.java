@@ -20,7 +20,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register", "/auth/login", "/auth/uid",
                                 "/auth/update/**", "/auth/photo/**", "/auth/profile/**",
-                                "/auth/delete/**","/api/categories/**").permitAll()
+                                "/auth/delete/**","/api/categories/**","/api/items/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

@@ -53,6 +53,7 @@ public class ItemService {
                 .discount(request.getDiscount())
                 .photoCount(request.getPhotoCount())
                 .category(category)
+                .adminUser(admin)
                 .deliveryPrice(request.getDeliveryPrice())
                 .timestamp(request.getTimestamp()).build();
         Items saved = itemRepository.save(items);
