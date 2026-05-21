@@ -56,6 +56,8 @@ public class Items {
     @Column(name = "timestamp", nullable = false)
     private long timestamp;
 
+    @Column(name = "isLiked_item")
+    private boolean liked;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
