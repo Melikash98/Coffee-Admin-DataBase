@@ -4,7 +4,6 @@ import com.melikash98.AdminSpring.DTO.ItemRequest;
 import com.melikash98.AdminSpring.Model.AdminUser;
 import com.melikash98.AdminSpring.Model.Categories;
 import com.melikash98.AdminSpring.Model.Items;
-import com.melikash98.AdminSpring.Model.Photos;
 import com.melikash98.AdminSpring.Repository.AdminUserRepository;
 import com.melikash98.AdminSpring.Repository.CategoryRepository;
 import com.melikash98.AdminSpring.Repository.ItemRepository;

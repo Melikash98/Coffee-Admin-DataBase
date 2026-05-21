@@ -18,7 +18,6 @@ import java.util.List;
 public class Items {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "Id", unique = true, nullable = false)
     private String id;
 
@@ -56,12 +55,12 @@ public class Items {
     @Column(name = "isLiked_item")
     private boolean isLiked;
 
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    private List<String> photos;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Categories category;
-
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    private List<Photos> photos;
 
     @OneToOne(mappedBy = "item", cascade = CascadeType.ALL)
     private ScoreItem scoreItem;
