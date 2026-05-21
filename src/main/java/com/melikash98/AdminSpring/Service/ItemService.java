@@ -18,12 +18,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ItemService {
-    private ItemRepository itemRepository;
-    private CategoryRepository categoryRepository;
-    private AdminUserRepository adminUserRepository;
+    private final ItemRepository itemRepository;
+    private final CategoryRepository categoryRepository;
+    private final AdminUserRepository adminUserRepository;
 
     private String generateItemId() {
-        String lastId = categoryRepository.findLastId();
+        String lastId = itemRepository.findLastId();
 
         if (lastId == null) {
             return "item1001";

@@ -49,7 +49,9 @@ public class Items {
     @Column(name = "timestamp", nullable = false)
     private long timestamp;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    @ElementCollection
+    @CollectionTable(name = "item_photos", joinColumns = @JoinColumn(name = "item_id"))
+    @Column(name = "photo_url")
     private List<String> photos;
 
     @ManyToOne
