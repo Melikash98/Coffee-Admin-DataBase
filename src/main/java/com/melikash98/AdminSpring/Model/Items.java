@@ -31,9 +31,6 @@ public class Items {
     @Column(name = "country_item")
     private String country;
 
-    @Column(name = "isLiked_item")
-    private boolean isLiked;
-
     @Column(name = "overview_item")
     private String overview;
 
@@ -57,7 +54,7 @@ public class Items {
     private long timestamp;
 
     @Column(name = "isLiked_item")
-    private boolean liked;
+    private boolean isLiked;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
