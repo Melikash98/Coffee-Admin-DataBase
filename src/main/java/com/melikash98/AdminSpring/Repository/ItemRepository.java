@@ -14,5 +14,11 @@ public interface ItemRepository extends JpaRepository<Items, String> {
 
     List<Items> findByTypeItems(String typeItems);
 
+    List<Items> findByCategoryName(String categoryName);
+
+    boolean existsById(String id);
+
+    boolean existsCategoryId(String categoryId);
+
     boolean existsByNameAndAdminUserUid(String name, String adminId);
 }

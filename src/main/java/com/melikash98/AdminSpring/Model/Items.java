@@ -24,11 +24,8 @@ public class Items {
     @Column(name = "name_item")
     private String name;
 
-    @Column(name = "city_item")
-    private String city;
-
-    @Column(name = "country_item")
-    private String country;
+    @Column(name = "location_item")
+    private String location;
 
     @Column(name = "overview_item")
     private String overview;
@@ -42,8 +39,8 @@ public class Items {
     @Column(name = "type_items", nullable = false)
     private String typeItems;
 
-    @Column(name = "free_delivery_item")
-    private boolean freeDelivery;
+    @Column(name = "delivery_price_items", nullable = false)
+    private String deliveryPrice;
 
     @Column(name = "discount_item", nullable = false)
     private String discount;
@@ -51,9 +48,6 @@ public class Items {
 
     @Column(name = "timestamp", nullable = false)
     private long timestamp;
-
-    @Column(name = "isLiked_item")
-    private boolean isLiked;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<String> photos;
