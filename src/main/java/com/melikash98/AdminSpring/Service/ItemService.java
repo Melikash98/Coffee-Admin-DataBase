@@ -41,7 +41,7 @@ public class ItemService {
                 .overview(dto.getOverview())
                 .price(dto.getPrice())
                 .typeItems(dto.getTypeItems())
-                .discount(Integer.parseInt(dto.getDiscount()))
+                .discount(dto.getDiscount())
                 .freeDelivery(dto.isFreeDelivery())
                 .photoCount(dto.getPhotos() != null ? dto.getPhotos().size() : 0)
                 .timestamp(System.currentTimeMillis())
@@ -99,7 +99,7 @@ public class ItemService {
         item.setPrice(dto.getPrice());
         item.setTypeItems(dto.getTypeItems());
         item.setFreeDelivery(dto.isFreeDelivery());
-        item.setDiscount(Integer.parseInt(dto.getDiscount()));
+        item.setDiscount(dto.getDiscount());
         item.setCategory(category);
 
         if (dto.getPhotos() != null && !dto.getPhotos().isEmpty()) {

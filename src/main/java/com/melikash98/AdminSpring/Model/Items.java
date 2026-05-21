@@ -47,7 +47,7 @@ public class Items {
     private boolean freeDelivery;
 
     @Column(name = "discount_item", nullable = false)
-    private int discount;
+    private String discount;
 
 
     @Column(name = "timestamp", nullable = false)
