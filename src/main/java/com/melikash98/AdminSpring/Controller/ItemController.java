@@ -24,12 +24,17 @@ public class ItemController {
     public ResponseEntity<Items> getItemById(@PathVariable String id) {
         return ResponseEntity.ok(itemService.getItemsById(id));
     }
+
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<List<Items>> getItemsByCategoryId(@PathVariable String categoryId) {
-        return ResponseEntity.ok(itemService.getItemsByCategoryId(categoryId));
+    public ResponseEntity<List<Items>> getItemsByCategoryId(
+            @PathVariable String categoryId,
+            @RequestParam(required = false, defaultValue = "false") boolean latest) {
+        return ResponseEntity.ok(itemService.getItemsByCategoryId(categoryId, latest));
     }
     @GetMapping("/admin/{adminId}")
-    public ResponseEntity<List<Items>> getItemsByAdminId(@PathVariable String adminId) {
-        return ResponseEntity.ok(itemService.getItemsByAdminId(adminId));
+    public ResponseEntity<List<Items>> getItemsByAdminId(
+            @PathVariable String adminId,
+            @RequestParam(required = false, defaultValue = "false") boolean latest) {
+        return ResponseEntity.ok(itemService.getItemsByAdminId(adminId, latest));
     }
 }

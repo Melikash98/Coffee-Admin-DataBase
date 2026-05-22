@@ -98,11 +98,17 @@ public class ItemService {
                 .orElseThrow(() -> new RuntimeException("Category not found!"));
     }
 
-    public List<Items> getItemsByCategoryId(String categoryId) {
-        return itemRepository.findByCategoryId(categoryId);
+    public List<Items> getItemsByAdminId(String adminId, boolean latest) {
+        if (latest) {
+            return itemRepository.findByAdminInfoAdminIdOrderByTimestampDesc(adminId);
+        }
+        return itemRepository.findByAdminInfoAdminId(adminId);
     }
 
-    public List<Items> getItemsByAdminId(String adminId) {
-        return itemRepository.findByAdminInfoAdminId(adminId);
+    public List<Items> getItemsByCategoryId(String categoryId, boolean latest) {
+        if (latest) {
+            return itemRepository.findByCategoryIdOrderByTimestampDesc(categoryId);
+        }
+        return itemRepository.findByCategoryId(categoryId);
     }
 }

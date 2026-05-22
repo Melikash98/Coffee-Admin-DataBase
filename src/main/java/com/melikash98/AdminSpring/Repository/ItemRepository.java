@@ -14,14 +14,14 @@ public interface ItemRepository extends JpaRepository<Items, String> {
     String findLastId();
 
     List<Items> findByAdminInfoAdminId(String adminId);
+    List<Items> findByAdminInfoAdminIdOrderByTimestampDesc(String adminId);
 
     List<Items> findByCategoryId(String categoryId);
+    List<Items> findByCategoryIdOrderByTimestampDesc(String categoryId);
 
     List<Items> findByTypeItems(String typeItems);
 
     boolean existsById(String id);
-
     boolean existsByCategoryId(String categoryId);
-
     boolean existsByNameAndAdminInfoAdminId(String name, String adminId);
 }
