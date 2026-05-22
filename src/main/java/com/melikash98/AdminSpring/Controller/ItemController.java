@@ -20,4 +20,12 @@ public class ItemController {
     public ResponseEntity<Items> addItem(@RequestBody ItemRequest items) {
         return ResponseEntity.ok(itemService.addItem(items));
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Items> getItemById(@PathVariable String id) {
+        return ResponseEntity.ok(itemService.getItemsById(id));
+    }
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<Items>> getItemsByCategoryId(@PathVariable String categoryId) {
+        return ResponseEntity.ok(itemService.getItemsByCategoryId(categoryId));
+    }
 }

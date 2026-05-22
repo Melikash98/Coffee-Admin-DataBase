@@ -88,4 +88,16 @@ public class ItemService {
 
         return itemRepository.save(item);
     }
+
+    public List<Items> getAllItems() {
+        return itemRepository.findAll();
+    }
+
+    public Items getItemsById(String id) {
+        return itemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found!"));
+    }
+    public List<Items> getItemsByCategoryId(String categoryId){
+        return itemRepository.findByCategoryId(categoryId);
+    }
 }
