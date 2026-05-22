@@ -28,4 +28,8 @@ public class ItemController {
     public ResponseEntity<List<Items>> getItemsByCategoryId(@PathVariable String categoryId) {
         return ResponseEntity.ok(itemService.getItemsByCategoryId(categoryId));
     }
+    @GetMapping("/admin/{adminId}")
+    public ResponseEntity<List<Items>> getItemsByAdminId(@PathVariable String adminId) {
+        return ResponseEntity.ok(itemService.getItemsByAdminId(adminId));
+    }
 }

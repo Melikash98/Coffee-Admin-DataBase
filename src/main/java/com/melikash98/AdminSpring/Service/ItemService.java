@@ -97,7 +97,12 @@ public class ItemService {
         return itemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found!"));
     }
-    public List<Items> getItemsByCategoryId(String categoryId){
+
+    public List<Items> getItemsByCategoryId(String categoryId) {
         return itemRepository.findByCategoryId(categoryId);
+    }
+
+    public List<Items> getItemsByAdminId(String adminId) {
+        return itemRepository.findByAdminInfoAdminId(adminId);
     }
 }
