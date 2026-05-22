@@ -27,7 +27,7 @@ public class Items {
     @Column(name = "location_item")
     private String location;
 
-    @Column(name = "overview_item")
+    @Column(name = "overview_item", columnDefinition = "TEXT")
     private String overview;
 
     @Column(name = "photoCount_item", nullable = false)
@@ -51,15 +51,15 @@ public class Items {
 
     @ElementCollection
     @CollectionTable(name = "item_photos", joinColumns = @JoinColumn(name = "item_id"))
-    @Column(name = "photo_url")
+    @Column(name = "photo_url", columnDefinition = "TEXT")
     private List<String> photos;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Categories category;
 
-    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL)
-    private ScoreItem scoreItem;
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    private List<ScoreItem> scores;
 
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)

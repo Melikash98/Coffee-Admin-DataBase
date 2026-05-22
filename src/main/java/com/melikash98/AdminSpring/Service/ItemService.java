@@ -29,10 +29,15 @@ public class ItemService {
             return "item1001";
         }
 
-        int number = Integer.parseInt(lastId.replace("item", ""));
-        return "item" + (number + 1);
+        try {
+            int number = Integer.parseInt(lastId.replace("item", ""));
+            return "item" + (number + 1);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Invalid item ID format in database: " + lastId);
+        }
     }
 
+    @Transactional
     public Items addItem(ItemRequest request) {
         Categories category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found: " + request.getCategoryId()));
@@ -50,6 +55,7 @@ public class ItemService {
                 .overview(request.getOverview())
                 .price(request.getPrice())
                 .typeItems(request.getTypeItems())
+                .location(request.getLocation())
                 .discount(request.getDiscount())
                 .photoCount(request.getPhotoCount())
                 .category(category)

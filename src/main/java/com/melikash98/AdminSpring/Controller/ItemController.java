@@ -19,7 +19,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping("/add")
-    public ResponseEntity<Items> addCategory(@RequestBody ItemRequest items) {
+    public ResponseEntity<Items> addItem(@RequestBody ItemRequest items) {
         return ResponseEntity.ok(itemService.addItem(items));
     }
 }
