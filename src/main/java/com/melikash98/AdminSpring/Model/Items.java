@@ -58,10 +58,9 @@ public class Items {
     @JoinColumn(name = "category_id", nullable = false)
     private Categories category;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    private List<ScoreItem> scores;
+    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ScoreItem score;
 
-    @ManyToOne
-    @JoinColumn(name = "admin_id", nullable = false)
-    private AdminUser adminUser;
+    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private StoreInfo adminInfo;
 }

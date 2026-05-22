@@ -1,8 +1,6 @@
 package com.melikash98.AdminSpring.Controller;
 
-import com.melikash98.AdminSpring.DTO.CategoryRequest;
 import com.melikash98.AdminSpring.DTO.ItemRequest;
-import com.melikash98.AdminSpring.Model.Categories;
 import com.melikash98.AdminSpring.Model.Items;
 import com.melikash98.AdminSpring.Service.ItemService;
 import lombok.RequiredArgsConstructor;

@@ -16,6 +16,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class ScoreItem {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false)
@@ -30,7 +31,7 @@ public class ScoreItem {
     @Column(name = "total", nullable = false)
     private double total;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "ratings", joinColumns = @JoinColumn(name = "score_id"))
     @MapKeyColumn(name = "user_id")
     @Column(name = "rating", nullable = false)

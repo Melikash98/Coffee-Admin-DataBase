@@ -1,10 +1,10 @@
 package com.melikash98.AdminSpring.Service;
 
 import com.melikash98.AdminSpring.DTO.ItemRequest;
-import com.melikash98.AdminSpring.Model.AdminUser;
 import com.melikash98.AdminSpring.Model.Categories;
 import com.melikash98.AdminSpring.Model.Items;
-import com.melikash98.AdminSpring.Repository.AdminUserRepository;
+import com.melikash98.AdminSpring.Model.ScoreItem;
+import com.melikash98.AdminSpring.Model.StoreInfo;
 import com.melikash98.AdminSpring.Repository.CategoryRepository;
 import com.melikash98.AdminSpring.Repository.ItemRepository;
 import jakarta.transaction.Transactional;
@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -20,7 +21,6 @@ import java.util.List;
 public class ItemService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
-    private final AdminUserRepository adminUserRepository;
 
     private String generateItemId() {
         String lastId = itemRepository.findLastId();
@@ -42,13 +42,12 @@ public class ItemService {
         Categories category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found: " + request.getCategoryId()));
 
-        AdminUser admin = adminUserRepository.findById(request.getAdminId())
-                .orElseThrow(() -> new RuntimeException("Admin not found: " + request.getAdminId()));
-
-        if (itemRepository.existsByNameAndAdminUserUid(request.getName(), request.getAdminId())) {
+        String adminId = request.getStoreInfoRequest().getAdminId();
+        if (itemRepository.existsByNameAndAdminInfoAdminId(request.getName(), adminId)) {
             throw new RuntimeException("This Item has already been Added!");
         }
-        Items items = Items.builder()
+
+        Items item = Items.builder()
                 .id(generateItemId())
                 .name(request.getName())
                 .photos(request.getPhotos())
@@ -59,10 +58,34 @@ public class ItemService {
                 .discount(request.getDiscount())
                 .photoCount(request.getPhotoCount())
                 .category(category)
-                .adminUser(admin)
                 .deliveryPrice(request.getDeliveryPrice())
-                .timestamp(request.getTimestamp()).build();
-        Items saved = itemRepository.save(items);
-        return saved;
+                .timestamp(request.getTimestamp())
+                .build();
+
+        ItemRequest.StoreInfoRequest storeReq = request.getStoreInfoRequest();
+        StoreInfo storeInfo = StoreInfo.builder()
+                .adminId(storeReq.getAdminId())
+                .name(storeReq.getName())
+                .storeName(storeReq.getStoreName())
+                .phone(storeReq.getPhone())
+                .email(storeReq.getEmail())
+                .location(storeReq.getLocation())
+                .photo(storeReq.getPhoto())
+                .item(item)
+                .build();
+
+        ScoreItem scoreItem = ScoreItem.builder()
+                .average(0)
+                .count(0)
+                .total(0)
+                .ratings(new HashMap<>())
+                .item(item)
+                .build();
+
+        item.setAdminInfo(storeInfo);
+        item.setScore(scoreItem);
+
+
+        return itemRepository.save(item);
     }
 }
